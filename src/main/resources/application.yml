@@ -1,17 +1,28 @@
 spring:
+  application:
+    name: ai-health-log
   datasource:
-    url: jdbc:mysql://db:3306/demo_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: user
-    password: password
+    # Docker上で実行する場合は db:3306 に変更してください
+    url: jdbc:mysql://localhost:3307/ai-health-log_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ai-health-log
+    password: ai-health-log
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
+    open-in-view: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
   thymeleaf:
     cache: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    out-of-order: false
+    table: flyway_schema_history
 server:
   port: 8080

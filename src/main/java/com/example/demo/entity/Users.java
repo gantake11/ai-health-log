@@ -52,7 +52,7 @@ public class Users {
     // 更新日時
     private LocalDateTime updatedAt;
 
-    @Column(name = "delete_flg", columnDefinition = "int default 0")
+    @Column(name = "delete_flg", columnDefinition = "tinyint(1) default 0")
     // 削除フラグ
     private boolean deleteFlg;
 

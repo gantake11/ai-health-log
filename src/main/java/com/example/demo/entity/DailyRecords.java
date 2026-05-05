@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -30,13 +31,17 @@ public class DailyRecords {
     private int dailyRecordsId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     // ユーザーID
     private Users user;
 
     @Column(name = "date", nullable = false)
     // 日付
     private LocalDate date;
+
+    @Column(name = "meal_time", nullable = false)
+    // 直前の食事の時間
+    private LocalTime mealTime;
 
     @Column(name = "weight", nullable = false)
     // 体重
@@ -46,11 +51,11 @@ public class DailyRecords {
     // 歩数
     private int steps;
 
-    @Column(name = "notes")
+    @Column(name = "notes", columnDefinition = "text")
     // 備考
     private String notes;
 
-    @Column(name = "gemini_message", nullable = false)
+    @Column(name = "gemini_message", nullable = false, columnDefinition = "text")
     // geminiのメッセージ
     private String geminiMessage;
 
@@ -64,7 +69,7 @@ public class DailyRecords {
     // 更新日時
     private LocalDateTime updatedAt;
 
-    @Column(name = "delete_flg", columnDefinition = "int default 0")
+    @Column(name = "delete_flg", columnDefinition = "tinyint(1) default 0")
     // 削除フラグ
     private boolean deleteFlg;
     

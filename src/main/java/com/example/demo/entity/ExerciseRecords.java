@@ -30,16 +30,16 @@ public class ExerciseRecords {
     private int exerciseRecordsId;
 
     @ManyToOne
-    @JoinColumn(name = "daily_records_id")
+    @JoinColumn(name = "daily_records_id", nullable = false)
     // 日々の記録のID
     private DailyRecords dailyRecords;
 
     @ManyToOne
-    @JoinColumn(name = "exercise_menu_id")
+    @JoinColumn(name = "exercise_menu_id", nullable = false)
     // 日々の記録のID
     private ExerciseMenu exerciseMenu;
 
-    @Column(name = "details", nullable = false)
+    @Column(name = "details", nullable = false, columnDefinition = "text")
     // 備考
     private String details;
 
@@ -61,7 +61,7 @@ public class ExerciseRecords {
     // 更新日時
     private LocalDateTime updatedAt;
 
-    @Column(name = "delete_flg", columnDefinition = "int default 0")
+    @Column(name = "delete_flg", columnDefinition = "tinyint(1) default 0")
     // 削除フラグ
     private boolean deleteFlg;
     
