@@ -1,0 +1,12 @@
+# Build stage
+FROM maven:3.9.6-eclipse-temurin-21-alpine AS build
+COPY src /app/src
+COPY pom.xml /app
+WORKDIR /app
+RUN mvn clean package -DskipTests
+
+# Run stage
+FROM eclipse-temurin:21-jre-alpine
+COPY --from=build /app/target/*.jar /app/app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

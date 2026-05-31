@@ -6,4 +6,4 @@ create table if not exists mst_users (
     `created_at` datetime default current_timestamp,
     `updated_at` datetime default current_timestamp on update current_timestamp,
     `delete_flg` bool default 0
-)
+);

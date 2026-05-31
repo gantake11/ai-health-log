@@ -8,6 +8,6 @@ create table if not exists tbl_exercise_records (
     `created_at` datetime default current_timestamp,
     `updated_at` datetime default current_timestamp on update current_timestamp,
     `delete_flg` bool default 0,
-    FOREIGN KEY (daily_records_id) REFERENCES tbl_daily_records(daily_records_id)
-    FOREIGN KEY (exercise_menu_id) REFERENCES mst_exercise_menu(exercise_menu_id),
-)
+    FOREIGN KEY (daily_records_id) REFERENCES tbl_daily_records(daily_records_id),
+    FOREIGN KEY (exercise_menu_id) REFERENCES mst_exercise_menu(exercise_menu_id)
+);

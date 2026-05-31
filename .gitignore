@@ -1,0 +1,36 @@
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sks
+
+# Build tool and OS artifacts
+target/
+out/
+.DS_Store
+Thumbs.db
+
+# Frontend (Node.js/Vue)
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.eslintcache
+frontend/.stylelintcache
+
+# Backend (Java/Maven)
+backend/target/
+backend/*.log
+backend/.factorypath
+backend/.project
+backend/.classpath
+backend/.settings/
+
+# Local configuration
+.env
+.env.local
+.kiro/tmp/
